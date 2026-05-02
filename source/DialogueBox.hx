@@ -68,7 +68,7 @@ class DialogueBox extends FlxSpriteGroup
 			case 'house' | 'insanity' | 'splitathon' | 'old-house' | 'old-insanity' | 'old-splitathon':
 				FlxG.sound.playMusic(Paths.music('DaveDialogue'), 0);
 				FlxG.sound.music.fadeIn(1, 0, 0.8);
-			case 'furiosity' | 'polygonized' | 'cheating' | 'unfairness':
+			case 'furiosity' | 'polygonized' | 'cheating' | 'unfairness' | 'enough':
 				FlxG.sound.playMusic(Paths.music('scaryAmbience'), 0);
 				FlxG.sound.music.fadeIn(1, 0, 0.8);
 			case 'supernovae' | 'glitch':
@@ -153,7 +153,7 @@ class DialogueBox extends FlxSpriteGroup
 				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward', 'week6'));
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
-			case 'house' | 'insanity' | 'furiosity' | 'polygonized' | 'supernovae' | 'cheating' | 'unfairness' | 'glitch' | 'blocked' | 'corn-theft' | 'maze' | 'splitathon' | 'old-house' | 'old-insanity' | 'old-blocked' | 'old-corn-theft' | 'old-maze' | 'beta-maze' | 'old-splitathon':
+			case 'house' | 'insanity' | 'furiosity' | 'polygonized' | 'supernovae' | 'cheating' | 'unfairness' | 'glitch' | 'blocked' | 'corn-theft' | 'maze' | 'splitathon' | 'old-house' | 'old-insanity' | 'old-blocked' | 'old-corn-theft' | 'old-maze' | 'beta-maze' | 'old-splitathon' | 'enough':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('speech_bubble_talking');
 				box.setGraphicSize(Std.int(box.width / textBoxSizeFix));
@@ -182,7 +182,7 @@ class DialogueBox extends FlxSpriteGroup
 			case 'house' | 'insanity' | 'furiosity' | 'polygonized' | 'old-house' | 'old-insanity':
 				portraitLeftCharacter = 'dave';
 				
-			case 'blocked' | 'corn-theft' | 'maze' | 'supernovae' | 'glitch' | 'splitathon' | 'cheating' | 'unfairness' | 'old-blocked' | 'old-maze' | 'old-corn-theft' | 'beta-maze' | 'old-splitathon':
+			case 'blocked' | 'corn-theft' | 'maze' | 'supernovae' | 'glitch' | 'splitathon' | 'cheating' | 'unfairness' | 'old-blocked' | 'old-maze' | 'old-corn-theft' | 'beta-maze' | 'old-splitathon' | 'enough':
 				portraitLeftCharacter = 'bambi';
 		}
 
@@ -236,7 +236,7 @@ class DialogueBox extends FlxSpriteGroup
 				handSelect.setGraphicSize(Std.int(handSelect.width * 6));
 				handSelect.updateHitbox();
 				add(handSelect);
-			case 'furiosity' | 'polygonized' | 'cheating' | 'unfairness':
+			case 'furiosity' | 'polygonized' | 'cheating' | 'unfairness' | 'enough':
 				dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
 				dropText.font = 'Comic Sans MS Bold';
 				dropText.color = 0xFFFFFFFF;
@@ -512,7 +512,7 @@ class DialogueBox extends FlxSpriteGroup
 					case 'splitathon':
 						portrait.portraitPath = 'dialogue/bambi_splitathon';
 						portrait.portraitPrefix = 'bambi splitathon portrait';
-					case 'cheating':
+					case 'cheating' | 'enough':
 						portrait.portraitPath = 'dialogue/3d_bamb';
 						portrait.portraitPrefix = 'bambi 3d portrait';
 					case 'unfairness':
@@ -537,7 +537,7 @@ class DialogueBox extends FlxSpriteGroup
 					case 'blocked' | 'maze' | 'old-blocked' | 'old-maze' | 'beta-maze':
 						portrait.portraitPath = 'dialogue/bf_blocked_maze';
 						portrait.portraitPrefix = 'bf blocked & maze portrait';
-					case 'furiosity' | 'polygonized' | 'corn-theft' | 'cheating' | 'unfairness' | 'supernovae' | 'glitch' | 'old-corn-theft' | 'vs-dave-thanksgiving':
+					case 'furiosity' | 'polygonized' | 'corn-theft' | 'cheating' | 'unfairness' | 'enough' | 'supernovae' | 'glitch' | 'old-corn-theft' | 'vs-dave-thanksgiving':
 						portrait.portraitPath = 'dialogue/bf_furiosity_corntheft';
 						portrait.portraitPrefix = 'bf furiosity & corntheft portrait';
 					case 'insanity' | 'splitathon' | 'old-insanity' | 'old-splitathon':
@@ -554,7 +554,7 @@ class DialogueBox extends FlxSpriteGroup
 					case 'blocked' | 'old-blocked':
 						portrait.portraitPath = 'dialogue/gf_blocked';
 						portrait.portraitPrefix = 'gf blocked portrait';
-					case 'corn-theft' | 'cheating' | 'unfairness' | 'old-corn-theft' | 'vs-dave-thanksgiving':
+					case 'corn-theft' | 'cheating' | 'unfairness' | 'old-corn-theft' | 'vs-dave-thanksgiving' | 'enough':
 						portrait.portraitPath = 'dialogue/gf_corntheft';
 						portrait.portraitPrefix = 'gf corntheft portrait';
 					case 'maze' | 'old-maze' | 'beta-maze':

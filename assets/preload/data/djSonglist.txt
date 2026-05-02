@@ -15,3 +15,16 @@ internal,old-insanity,dave-old,bad
 internal,old-corn-theft,bambi-old,bad
 internal,old-maze,bambi-old,bad
 internal,furiosity,dave-angey,good
+internal,cheating,bambi-3d,good
+internal,unfairness,bambi-unfair,bad
+internal,enough,bambi-3d-piss,bad
+internal,disruption,bambi-3d,good
+internal,threedimensional,tristan,good
+internal,second-tristan-song,tristan,bad
+internal,disposition,bambi-3d,bad
+internal,aug,dave-angey,good
+internal,propellant,dave-angey,bad
+internal,half-n-half,the-duo,good
+
+
+

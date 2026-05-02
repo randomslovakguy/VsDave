@@ -55,6 +55,16 @@ class CreditsMenuState extends MusicBeatState
    var peopleInCredits:Array<Person> = 
    [
       //devs
+      new Person("VS Good", CreditsType.Dev, "Made the Modified Build",
+        [
+           new Social('youtube', 'https://www.youtube.com/@vs-good'), 
+         ]
+      ),
+      new Person("Sammi", CreditsType.Dev, "Helped with coding",
+        [
+           new Social('youtube', 'https://www.youtube.com/channel/UCExjbsjO3SazVPEqYOx_W2A'), 
+         ]
+      ),
      new Person("MoldyGH", CreditsType.Dev, "Director, Creator, Programmer, Musician, Main Developer",
         [
            new Social('youtube', 'https://www.youtube.com/channel/UCHIvkOUDfbMCv-BEIPGgpmA'), 

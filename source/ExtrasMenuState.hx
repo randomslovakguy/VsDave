@@ -136,7 +136,7 @@ class ExtrasMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer + " FNF - " + daRealEngineVer + " Engine", 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer + " FNF - " + daRealEngineVer + " Engine - DNB 2.5c Modified Build", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

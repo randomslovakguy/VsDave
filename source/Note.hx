@@ -1,5 +1,7 @@
 package;
 
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import flixel.math.FlxRandom;
 import flixel.FlxState;
 import flixel.FlxG;
@@ -44,7 +46,7 @@ class Note extends FlxSprite
 
 	private var InPlayState:Bool = false;
 
-	private var CharactersWith3D:Array<String> = ["dave-angey", "bambi-3d", 'dave-annoyed-3d', 'dave-3d-standing-bruh-what', 'bambi-unfair'];
+	private var CharactersWith3D:Array<String> = ["dave-angey", "bambi-3d", 'dave-annoyed-3d', 'dave-3d-standing-bruh-what', 'bambi-unfair', 'bambi-3d-piss'];
 
 	public var rating:String = "shit";
 
@@ -131,7 +133,7 @@ class Note extends FlxSprite
 		
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'cheating':
+			case 'cheating' | 'enough':
 				switch (noteData)
 				{
 					case 0:
@@ -177,7 +179,7 @@ class Note extends FlxSprite
 		}
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'cheating' | 'unfairness':
+			case 'cheating' | 'unfairness' | 'enough' | 'disposition' | 'propellant':
 				if (Type.getClassName(Type.getClass(FlxG.state)).contains("PlayState"))
 				{
 					var state:PlayState = cast(FlxG.state,PlayState);
@@ -189,6 +191,7 @@ class Note extends FlxSprite
 							if (spr.ID == notetolookfor)
 							{
 								x = spr.x;
+								angle = spr.angle;
 								MyStrum = spr;
 							}
 						});
@@ -200,6 +203,7 @@ class Note extends FlxSprite
 							if (spr.ID == notetolookfor)
 							{
 									x = spr.x;
+									angle = spr.angle;
 									MyStrum = spr;
 								}
 							});
@@ -296,6 +300,7 @@ class Note extends FlxSprite
 							if (spr.ID == notetolookfor)
 							{
 								x = spr.x;
+								angle = spr.angle;
 								MyStrum = spr;
 							}
 						});
@@ -307,6 +312,7 @@ class Note extends FlxSprite
 								if (spr.ID == notetolookfor)
 								{
 									x = spr.x;
+									angle = spr.angle;
 									MyStrum = spr;
 								}
 							});

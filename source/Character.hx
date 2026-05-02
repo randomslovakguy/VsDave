@@ -261,6 +261,28 @@ class Character extends FlxSprite
 				antialiasing = false;
 		
 				playAnim('idle');
+			case 'bambi-3d-piss':
+				// BAMBI SHITE ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('bambi/bambiPISSED');
+				frames = tex;
+				animation.addByPrefix('idle', 'DaveAngry idle dance', 24, false);
+				animation.addByPrefix('singUP', 'DaveAngry Sing Note UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'DaveAngry Sing Note RIGHT', 24, false);
+				animation.addByPrefix('singDOWN', 'DaveAngry Sing Note DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'DaveAngry Sing Note LEFT', 24, false);
+		
+				addOffset('idle');
+				addOffset("singUP", 20, -10);
+				addOffset("singRIGHT", 80, -20);
+				addOffset("singLEFT", 0, -10);
+				addOffset("singDOWN", 0, 10);
+				globaloffset[0] = 150;
+				globaloffset[1] = 450; //this is the y
+				setGraphicSize(Std.int(width / furiosityScale));
+				updateHitbox();
+				antialiasing = false;
+		
+				playAnim('idle');
 			case 'bambi-unfair':
 				// BAMBI SHITE ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('bambi/unfair_bambi');

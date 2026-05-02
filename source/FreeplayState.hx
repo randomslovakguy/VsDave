@@ -53,7 +53,9 @@ class FreeplayState extends MusicBeatState
     	0xFFca1f6f, // GF
 		0xFF4965FF, // DAVE
 		0xFF00B515, // MISTER BAMBI RETARD
-		0xFF00FFFF //SPLIT THE THONNNNN
+		0xFF00FFFF, //SPLIT THE THONNNNN
+		0xFFFFE600,
+		0xFFFF0000
     ];
 
 	private var iconArray:Array<HealthIcon> = [];
@@ -64,7 +66,7 @@ class FreeplayState extends MusicBeatState
 		DiscordClient.changePresence("In the Freeplay Menu", null);
 		#end
 		
-		var isDebug:Bool = false;
+		var isDebug:Bool = true;
 
 		#if debug
 		isDebug = true;
@@ -98,7 +100,7 @@ class FreeplayState extends MusicBeatState
 			case 'base':
 				addWeek(['Tutorial'], 0, ['gf']);
 			case 'dave':
-				addWeek(['House', 'Insanity', 'Polygonized'], 1, ['dave', 'dave', 'dave-angey']);
+				addWeek(['House', 'Insanity', 'Polygonized', 'Gerjuanimo'], 1, ['dave', 'dave', 'dave-angey', 'dad']);
 				addWeek(['Bonus-Song'], 1,['dave']);
 				addWeek(['Blocked','Corn-Theft','Maze',], 2, ['bambi']);
 				addWeek(['Splitathon'], 3,['the-duo']);
@@ -106,13 +108,20 @@ class FreeplayState extends MusicBeatState
 				addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving'], 2, ['bambi-stupid']);
 				if (FlxG.save.data.cheatingFound)
 					addWeek(['Cheating'], 2, ['bambi-3d']);
+				if (FlxG.save.data.enoughFound)
+					addWeek(['Enough'], 2, ['bambi-3d-piss']);
 				if(FlxG.save.data.unfairnessFound)
-					addWeek(['Unfairness'], 2, ['bambi-unfair']);
+					addWeek(['Unfairness', 'Secret'], 2, ['bambi-unfair', 'bambi-stupid']);
 			case 'extra':
+				addWeek(['Propellant'], 1, ['dave-angey']);
 				addWeek(['Mealie'], 2, ['bambi-loser']);
+				addWeek(['Half-N-Half'], 3, ['the-duo']);
+				addWeek(['Threedimensional', 'Second-Tristan-Song'], 5, ['tristan']);
 				addWeek(['Furiosity', 'Old-House', 'Old-Insanity'], 1, ['dave-angey', 'dave-old', 'dave-old']);
 				addWeek(['Old-Blocked', 'Old-Corn-Theft', 'Old-Maze', 'Beta-Maze'], 2, ['bambi-farmer-beta', 'bambi-farmer-beta', 'bambi-farmer-beta', 'bambi-farmer-beta']);
 				addWeek(['Old-Splitathon'], 3, ['the-duo']);
+				addWeek(['Disruption', 'Disposition'], 2, ['bambi-3d']);
+				addWeek(['Aug'], 4, ['dave-angey']);
 		}
 	}
 
