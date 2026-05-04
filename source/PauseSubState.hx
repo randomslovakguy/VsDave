@@ -17,10 +17,11 @@ class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Exit to menu'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Practice Mode', 'Options', 'Exit to menu'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
+	
 
 	public function new(x:Float, y:Float)
 	{
@@ -51,15 +52,25 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.updateHitbox();
 		add(levelDifficulty);
 
+		var practiceModeTxt:FlxText = new FlxText(20, 15 + (32 * 2), 0, "", 32);
+		practiceModeTxt.text += 'PRACTICE MODE ON';
+		practiceModeTxt.scrollFactor.set();
+		practiceModeTxt.setFormat(Paths.font("vcr.ttf"), 32);
+		practiceModeTxt.updateHitbox();
+	    add(practiceModeTxt);
+
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
+		practiceModeTxt.alpha = 0;
 
 		levelInfo.x = FlxG.width - (levelInfo.width + 20);
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
+		practiceModeTxt.x = FlxG.width - (practiceModeTxt.width + 20);
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(levelDifficulty, {alpha: 1, y: levelDifficulty.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5});
+		FlxTween.tween(practiceModeTxt, {alpha: 1, y: practiceModeTxt.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
@@ -113,6 +124,21 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.characteroverride = 'none';
 					PlayState.formoverride = 'none';
 					FlxG.switchState(new MainMenuState());
+				case "Options":
+					PlayState.screenshader.shader.uampmul.value[0] = 0;
+					PlayState.screenshader.Enabled = false;
+					PlayState.characteroverride = 'none';
+					PlayState.formoverride = 'none';
+					FlxG.switchState(new OptionsMenu());
+				case "Practice Mode":
+					if(PlayState.practiceMode)
+					{
+						PlayState.practiceMode = false;
+					}
+					else
+					{
+						PlayState.practiceMode = true;
+					}
 			}
 		}
 

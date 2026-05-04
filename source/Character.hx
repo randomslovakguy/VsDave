@@ -627,6 +627,26 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
+			case 'bambi-3d-annoyed':
+				frames = Paths.getSparrowAtlas('bambi/annoyExpunged');
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
+
+				addOffset('idle');
+				addOffset("singUP", 0, 0);
+				addOffset("singRIGHT", 0, 0);
+				addOffset("singLEFT", 0, 0);
+				addOffset("singDOWN", 0, 0);
+				
+				this.x = -500;
+				this.y = -200;
+				this.scale.x = 1;
+				this.scale.y = 1;
+
+				playAnim('idle');
 			case 'bambi-farmer-beta':
 				frames = Paths.getSparrowAtlas('bambi/bamber_farm_beta_man');
 				animation.addByPrefix('idle', 'idle', 24, false);

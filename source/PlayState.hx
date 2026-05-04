@@ -96,7 +96,7 @@ class PlayState extends MusicBeatState
 
 	var focusOnDadGlobal:Bool = true;
 
-	var funnyFloatyBoys:Array<String> = ['dave-angey', 'bambi-3d', 'dave-annoyed-3d', 'dave-3d-standing-bruh-what', 'bambi-unfair', 'bambi-3d-piss'];
+	var funnyFloatyBoys:Array<String> = ['dave-angey', 'bambi-3d', 'dave-annoyed-3d', 'dave-3d-standing-bruh-what', 'bambi-unfair', 'bambi-3d-piss', 'bambi-3d-annoyed'];
 
 	var storyDifficultyText:String = "";
 	var iconRPC:String = "";
@@ -139,6 +139,8 @@ class PlayState extends MusicBeatState
 	private var combo:Int = 0;
 
 	public static var misses:Int = 0;
+
+	public static var practiceMode:Bool = false;
 
 	private var accuracy:Float = 0.00;
 	private var totalNotesHit:Float = 0;
@@ -1623,7 +1625,8 @@ class PlayState extends MusicBeatState
 			gf.y += (Math.sin(elapsedtime) * 0.6);
 		}
 
-		if ((SONG.song.toLowerCase() == 'cheating' || SONG.song.toLowerCase() == 'enough') && !inCutscene) // fuck you
+		if (FlxG.save.data.modcharts) {
+			if ((SONG.song.toLowerCase() == 'cheating' || SONG.song.toLowerCase() == 'enough') && !inCutscene) // fuck you
 		{
 			playerStrums.forEach(function(spr:FlxSprite)
 			{
@@ -1715,6 +1718,7 @@ class PlayState extends MusicBeatState
 					spr.y = ((FlxG.height / 2) - (spr.height / 2)) + (Math.cos((elapsedtime + (spr.ID)) * 2) * 300);
 				});
 			}
+		}
 			
 		FlxG.camera.setFilters([new ShaderFilter(screenshader.shader)]); // this is very stupid but doesn't effect memory all that much so
 		if (shakeCam && eyesoreson)
@@ -1985,17 +1989,20 @@ class PlayState extends MusicBeatState
 		{
 			if(!perfectMode)
 			{
-				boyfriend.stunned = true;
+				if(practiceMode == false)
+					{
+						boyfriend.stunned = true;
 
-				persistentUpdate = false;
-				persistentDraw = false;
-				paused = true;
-	
-				vocals.stop();
-				FlxG.sound.music.stop();
-	
-				screenshader.shader.uampmul.value[0] = 0;
-				screenshader.Enabled = false;
+						persistentUpdate = false;
+						persistentDraw = false;
+						paused = true;
+			
+						vocals.stop();
+						FlxG.sound.music.stop();
+			
+						screenshader.shader.uampmul.value[0] = 0;
+						screenshader.Enabled = false;
+					}
 			}
 
 			if(shakeCam)
@@ -2007,7 +2014,9 @@ class PlayState extends MusicBeatState
 			{
 				if(!perfectMode)
 				{
-					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition()
+					if(practiceMode == false)
+					{
+						openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition()
 						.y, formoverride == "bf" || formoverride == "none" ? SONG.player1 : formoverride));
 
 						#if desktop
@@ -2023,6 +2032,7 @@ class PlayState extends MusicBeatState
 						+ " | Misses: "
 						+ misses, iconRPC);
 						#end
+					}
 				}
 			}
 			else
@@ -2050,7 +2060,10 @@ class PlayState extends MusicBeatState
 						{
 							FlxG.save.data.unlockedcharacters[7] = true;
 						}
-						openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition()
+
+						if(practiceMode == false)
+						{
+							openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition()
 							.y, formoverride == "bf" || formoverride == "none" ? SONG.player1 : formoverride));
 
 							#if desktop
@@ -2066,6 +2079,7 @@ class PlayState extends MusicBeatState
 							+ " | Misses: "
 							+ misses, iconRPC);
 							#end
+						}
 					}
 				}
 			}

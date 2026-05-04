@@ -46,7 +46,7 @@ class Note extends FlxSprite
 
 	private var InPlayState:Bool = false;
 
-	private var CharactersWith3D:Array<String> = ["dave-angey", "bambi-3d", 'dave-annoyed-3d', 'dave-3d-standing-bruh-what', 'bambi-unfair', 'bambi-3d-piss'];
+	private var CharactersWith3D:Array<String> = ["dave-angey", "bambi-3d", 'dave-annoyed-3d', 'dave-3d-standing-bruh-what', 'bambi-unfair', 'bambi-3d-piss', 'bambi-3d-annoyed'];
 
 	public var rating:String = "shit";
 
@@ -131,52 +131,76 @@ class Note extends FlxSprite
 			}
 		}
 		
-		switch (PlayState.SONG.song.toLowerCase())
-		{
-			case 'cheating' | 'enough':
-				switch (noteData)
-				{
-					case 0:
-						x += swagWidth * 3;
-						notetolookfor = 3;
-						animation.play('purpleScroll');
-					case 1:
-						x += swagWidth * 1;
-						notetolookfor = 1;
-						animation.play('blueScroll');
-					case 2:
-						x += swagWidth * 0;
-						notetolookfor = 0;
-						animation.play('greenScroll');
-					case 3:
-						notetolookfor = 2;
-						x += swagWidth * 2;
-						animation.play('redScroll');
-				}
-				flipY = (Math.round(Math.random()) == 0); //fuck you
-				flipX = (Math.round(Math.random()) == 1);
+		if(FlxG.save.data.modcharts) {
+			switch (PlayState.SONG.song.toLowerCase())
+			{
+				case 'cheating' | 'enough':
+					switch (noteData)
+					{
+						case 0:
+							x += swagWidth * 3;
+							notetolookfor = 3;
+							animation.play('purpleScroll');
+						case 1:
+							x += swagWidth * 1;
+							notetolookfor = 1;
+							animation.play('blueScroll');
+						case 2:
+							x += swagWidth * 0;
+							notetolookfor = 0;
+							animation.play('greenScroll');
+						case 3:
+							notetolookfor = 2;
+							x += swagWidth * 2;
+							animation.play('redScroll');
+					}
+					flipY = (Math.round(Math.random()) == 0); //fuck you
+					flipX = (Math.round(Math.random()) == 1);
 
-			default:
-				switch (noteData)
-				{
-					case 0:
-						x += swagWidth * 0;
-						notetolookfor = 0;
-						animation.play('purpleScroll');
-					case 1:
-						notetolookfor = 1;
-						x += swagWidth * 1;
-						animation.play('blueScroll');
-					case 2:
-						notetolookfor = 2;
-						x += swagWidth * 2;
-						animation.play('greenScroll');
-					case 3:
-						notetolookfor = 3;
-						x += swagWidth * 3;
-						animation.play('redScroll');
-				}
+				default:
+					switch (noteData)
+					{
+						case 0:
+							x += swagWidth * 0;
+							notetolookfor = 0;
+							animation.play('purpleScroll');
+						case 1:
+							notetolookfor = 1;
+							x += swagWidth * 1;
+							animation.play('blueScroll');
+						case 2:
+							notetolookfor = 2;
+							x += swagWidth * 2;
+							animation.play('greenScroll');
+						case 3:
+							notetolookfor = 3;
+							x += swagWidth * 3;
+							animation.play('redScroll');
+					}
+			}
 		}
+		else {
+			switch (noteData)
+					{
+						case 0:
+							x += swagWidth * 0;
+							notetolookfor = 0;
+							animation.play('purpleScroll');
+						case 1:
+							notetolookfor = 1;
+							x += swagWidth * 1;
+							animation.play('blueScroll');
+						case 2:
+							notetolookfor = 2;
+							x += swagWidth * 2;
+							animation.play('greenScroll');
+						case 3:
+							notetolookfor = 3;
+							x += swagWidth * 3;
+							animation.play('redScroll');
+					}
+		}
+		
 		switch (PlayState.SONG.song.toLowerCase())
 		{
 			case 'cheating' | 'unfairness' | 'enough' | 'disposition' | 'propellant':

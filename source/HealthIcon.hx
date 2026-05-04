@@ -52,6 +52,7 @@ class HealthIcon extends FlxSprite
 
 		animation.add('bambi-stupid', [18, 19], 0, false, isPlayer);
 		animation.add('bambi-3d', [20, 21], 0, false, isPlayer);
+		animation.add('bambi-3d-annoyed', [20, 21], 0, false, isPlayer);
 		animation.add('bambi-3d-piss', [42, 43], 0, false, isPlayer);
 		animation.add('bambi-unfair', [40, 41], 0, false, isPlayer);
 		animation.add('bambi-old', [18, 19], 0, false, isPlayer);
